@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      width: 250px;
+      margin: 50px auto;
+    }
+    .title-head {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .bt {
+      width: 25px;
+      height: 25px;
+      border: 1px solid black;
+    }
+    .bt:hover {
+      background-color: gray;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <div class="title-head">Minesweeper</div>
+      
+      <div class="" v-for="x in 10">
+        <button 
+        class="bt"
+        v-for="y in 10"
+        @click="onClick(x,y)"
+        >
+          {{(x-1)*10+y}}
+        </button>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          x: null,
+          y: null,
+         
+        },
+        methods:{
+          
+          onClick(x,y){
+            console.log(`Clicked at ${x},${y}`)
+          }
+        },
+        mounted(){
+          const WIDTH = 10
+          const HEIGHT = 10
+          function datas() {
+            Array.from(HEIGHT),()=>[]
+            } 
+          
+        }
+      });
+    </script>
+  </body>
+</html>
