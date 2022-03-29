@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #app{
+        background-color: #f2f2f2;
+      }
+      .head-name {
+        text-align: center;
+        font-size: 5em;
+      }
+
+      input {
+        width: 30%;
+        height: 2em;
+        font-size: 1em;
+        padding-left: 0.3em;
+        margin-left:0.2em ;
+      }
+      .head-p{
+        padding-left: 0.6em;
+        font-weight: 600;
+      }
+      .foot-s{
+        padding-left:0.4em ;
+      }
+      .foot-span{
+        color: black;
+        font-family: 800;
+      }
+      .p-sum{
+        position: fixed;
+    bottom: 50%;
+    right: 0;
+    width: 45%;
+    font-size: 3em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="head-name">临颍县永乐木业有限公司</div>
+      <div v-for="(item,index) in items">
+        <p class="head-p">{{m1[index]}}头原木</p>
+        <input
+          type="number"
+          v-model="name[index]"
+          oninput="if(value>100)value=100;"
+          max="100"
+          step="1"
+          min="0"
+        />
+        <br>
+        <span class="foot-s">木材方数:</span>
+        <span class="foot-span">{{ name[index]*items[index]}}</span>
+        <br>
+      </div>
+      <p class="p-sum"> 总方数 {{ message }} </p>
+     
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+         
+          message: 0,
+          name: [
+           0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+          ],
+
+          soke: [],
+          items: [
+            116, 126, 137, 149, 160, 172, 185, 198, 211, 225, 240, 255, 270,
+            285, 302, 318, 335, 353, 371, 389, 408, 427, 447, 467, 487, 508,
+            530, 552, 574, 597, 620, 644, 668, 693, 718, 743, 769, 795, 822,
+            849, 877, 905, 934, 963, 992, 1021,
+          ],
+          m1: [
+            22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+            39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+            56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+          ],
+        },
+        methods: {
+          say() {
+            // 仅在整个视图都被渲染之后才会运行的代码
+            for (let i = 0; i < 43; i++) {
+              this.soke[i] = "num" + i;
+              console.log(this.soke[i] + ":" + "null");
+            }
+            console.log(this.num);
+          },
+          
+          
+        },
+        mounted() {
+        
+        },
+        watch:{
+          name:function(){
+            this.name.forEach((element,index) => {
+              this.message += element * this.items[index]
+              console.log(this.message);
+            });
+          }
+        }
+      });
+
+      // app.arrays()
+    </script>
+  </body>
+</html>
